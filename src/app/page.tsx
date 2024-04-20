@@ -6,18 +6,7 @@ export default function Home() {
   return (
     <main>
       <Space direction="vertical" size={16}>
-        <Card title="DEfault card">
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>
-        </Card>
-
-        <Card
-          size="small"
-          title="Small size card"
-          extra={<a href="#">More</a>}
-          style={{ width: 300 }}
-        >
+        <Card title="Default card">
           <p>Card content</p>
           <p>Card content</p>
           <p>Card content</p>
