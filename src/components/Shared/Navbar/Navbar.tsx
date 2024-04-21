@@ -1,62 +1,55 @@
 "use client";
-import { MenuOutlined } from "@ant-design/icons";
-import { Drawer, Menu } from "antd";
-import { useState } from "react";
+import { Layout, Menu } from "antd";
+
+const { Header, Content, Footer } = Layout;
+
+const menuItems = [
+  {
+    label: "Home",
+    link: "/",
+    key: "home",
+  },
+  {
+    label: "Contact",
+    link: "/",
+    key: "contact",
+  },
+  {
+    label: "About",
+    link: "/",
+    key: "about",
+  },
+  {
+    label: "Login",
+    link: "/",
+    key: "login",
+  },
+];
 const Navbar = () => {
-  const [openMenu, setOpenMenu] = useState(false);
   return (
-    <div>
-      <div className="menuIcon h-[60px] pl-3 pt-3 ">
-        <MenuOutlined
-          className=" text-white text-2xl"
-          onClick={() => {
-            setOpenMenu(true);
-          }}
-        />
-      </div>
-      <span className="headerMenu">
-        <NavMenu />
-      </span>
-      <Drawer
-        placement="left"
-        open={openMenu}
-        onClose={() => {
-          setOpenMenu(false);
+    <Layout style={{ height: "65px" }}>
+      <Header
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          backgroundColor: "white",
         }}
-        closable={false}
       >
-        <NavMenu isInline />
-      </Drawer>
-    </div>
+        <div className="demo-logo">Logo</div>
+        <Menu
+          // theme="white"
+          mode="horizontal"
+          defaultSelectedKeys={["2"]}
+          style={{ flex: 1, minWidth: 0 }}
+        >
+          <Menu.Item key="home">Home</Menu.Item>
+          <Menu.Item key="about">About</Menu.Item>
+          <Menu.Item key="contact">Contact</Menu.Item>
+          <Menu.Item key="login">Login</Menu.Item>{" "}
+        </Menu>
+      </Header>
+    </Layout>
   );
 };
-
-function NavMenu({ isInline = false }) {
-  return (
-    <Menu
-      style={{ fontSize: 16, border: "none" }}
-      className=" font-[500]"
-      mode={isInline ? "inline" : "horizontal"}
-      items={[
-        {
-          label: "Home",
-          key: "home",
-        },
-        {
-          label: "Contact US",
-          key: "contact",
-        },
-        {
-          label: "About US",
-          key: "about",
-        },
-        {
-          label: "Login",
-          key: "login",
-        },
-      ]}
-    ></Menu>
-  );
-}
 
 export default Navbar;
