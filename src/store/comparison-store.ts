@@ -1,7 +1,14 @@
 import { TProperty } from "@/constants/property";
 import { create } from "zustand";
 
-export const useComparisonStore = create((set) => ({
+interface IProductState {
+  store: TProperty[];
+  addToStore: (property: TProperty) => void;
+  removeFromStore: (propertyId: string) => void;
+  clearStore: () => void;
+}
+
+export const useComparisonStore = create<IProductState>((set) => ({
   store: [],
   addToStore: (property: TProperty) =>
     set((state) => ({ store: [...state.store, property] })),
@@ -11,5 +18,5 @@ export const useComparisonStore = create((set) => ({
         (property: TProperty) => property._id !== propertyId
       ),
     })),
-  clearStore: set({ store: [] }),
+  clearStore: () => set({ store: [] }),
 }));

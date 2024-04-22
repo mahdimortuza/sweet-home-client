@@ -1,9 +1,10 @@
 import SHActionButton from "@/components/UI/SHActionButton/SHActionButton";
 import { TProperty } from "@/constants/property";
 import { EnvironmentOutlined } from "@ant-design/icons";
-import Image from "next/image";
+import { Image } from "antd";
 import Link from "next/link";
 import { PiBathtubThin, PiToiletThin } from "react-icons/pi";
+
 const PropertyCard = ({ property }: { property: TProperty }) => {
   const {
     _id,
@@ -24,8 +25,8 @@ const PropertyCard = ({ property }: { property: TProperty }) => {
   const { image: ownerImage, name: ownerName, status: ownerStatus } = owner;
 
   return (
-    <div className="pb-2 mx-auto  w-[380px]">
-      <div className="border-b border-gray pb-2 mx-auto  w-[380px]">
+    <div className="pb-2 mx-auto  w-[350px]">
+      <div className="border-b border-gray pb-2 mx-auto">
         {/* image and status in position */}
         <div className="relative">
           <div className="group">
@@ -33,8 +34,8 @@ const PropertyCard = ({ property }: { property: TProperty }) => {
               className="mx-auto rounded-md"
               alt="image"
               src={image}
-              width={380}
-              height={220}
+              width={"auto"}
+              height={"auto"}
             />
             {/* for showing status and comparison */}
             <div className="absolute top-4 flex justify-between w-full ">
@@ -59,7 +60,9 @@ const PropertyCard = ({ property }: { property: TProperty }) => {
           <span className=" ml-2">{location}</span>
         </div>
 
-        <h1 className=" mt-1 text-2xl font-bold">{title}</h1>
+        <Link href={`/properties/${_id}`}>
+          <h1 className=" mt-1 text-2xl font-bold">{title}</h1>
+        </Link>
         <p className="text-[#808080]">{description}</p>
       </div>
 
